@@ -1,0 +1,17 @@
+{
+  "name": "stamps",
+  "version": "1.0.0",
+  "description": "app for stamping",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "react",
+    "redux",
+    "django",
+    "rest"
+  ],
+  "author": "Seyhak Ly",
+  "license": "ISC"
+}
