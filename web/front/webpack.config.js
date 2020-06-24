@@ -39,7 +39,7 @@ const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
 	mode: 'development',
-
+	watch: true,
 	plugins: [
 		new webpack.ProgressPlugin(),
 		new MiniCssExtractPlugin({ filename: 'main.[chunkhash].css' }),
@@ -53,9 +53,14 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /.(js|jsx)$/,
-				include: [],
-				loader: 'babel-loader'
+				test: /\.js$/,
+				exclude: /(node_modules|bower_components)/,
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env']
+					}
+				}
 			},
 			{
 				test: /.(scss|css)$/,

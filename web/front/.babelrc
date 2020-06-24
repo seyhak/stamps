@@ -1,13 +1,10 @@
 {
     "plugins": [
-        "syntax-dynamic-import"
+        "syntax-dynamic-import",
+        "@babel/plugin-proposal-class-properties"
     ],
     "presets": [
-        [
-            "@babel/preset-env",
-            {
-                "modules": false
-            }
-        ]
+        "@babel/preset-env",
+        "@babel/preset-react"
     ]
 }
