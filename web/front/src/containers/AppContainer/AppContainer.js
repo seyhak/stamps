@@ -1,13 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import  './main.css'
-    
+import './AppContainer.sass'
+
+import Footer from '../../components/Footer/Footer'
+import Navbar from '../../components/Navbar/Navbar'
+
 function AppContainer(){
 	return(
-		<h1>hello world</h1>
+		<div className='AppContainer dark'>
+			<Navbar/>
+
+			<Footer>
+
+			</Footer>
+		</div>
 	)
 }
-
-
 
 export default AppContainer
