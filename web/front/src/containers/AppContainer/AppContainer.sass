@@ -1,8 +1,9 @@
 @import "../../global/styles/styles"
 
-@mixin theme($main_color: $dark_main_color, $background-color: $dark_background_color)
+@mixin theme($main_color: $dark_main_color, $background_color: $dark_background_color, $secondary_background_color: $dark_background_color_secondary)
+    $secondary_background_color: $secondary_background_color
     color: $main_color
-    background-color: $background-color
+    background-color: $background_color
 
 #root
 
@@ -14,4 +15,4 @@
     .dark
         @include theme()
     .light
-        @include theme($main_color: $light_main_color, $background-color: $light_background_color)
+        @include theme($main_color: $light_main_color, $background_color: $light_background_color)
