@@ -1,2 +1,3 @@
 web/front/node_modules/*
 *.pyc
+web/front/dist/main.js
