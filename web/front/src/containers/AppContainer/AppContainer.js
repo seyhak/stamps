@@ -10,9 +10,8 @@ function AppContainer(){
 		<div className='AppContainer dark'>
 			<Navbar/>
 
-			<Footer>
-
-			</Footer>
+			
+			{/* <Footer/> */}
 		</div>
 	)
 }
