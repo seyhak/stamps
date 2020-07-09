@@ -1,6 +1,39 @@
-.Dropdown
+@import "../../global/styles/styles"
+
+.dropdown_container
     position: absolute
-    right: 0.5em
-    padding: 1em
-    &:hover
-        cursor: pointer
+    width: 100%
+    right: 0
+    top: 0
+
+    .dropdown
+        padding: 1em
+        position: absolute
+        right: 0em
+
+        &:hover
+            cursor: pointer
+
+    .dropdown_menu_container
+        height: 100vh
+        width: 100%
+        padding-bottom: 1em
+
+        .dropdown_menu
+            position: absolute
+            top: 5em
+            left: 0
+            width: 100%
+            padding-bottom: 1em
+
+            .dropdown_menu_option
+                border: none
+                border-radius: 10px
+                width: 90%
+                margin: 1rem 5% 0
+                font-size: 3em
+                padding: 0.5em
+            
+            .theme_switcher
+                float: right
+                margin: 1em 5% 0

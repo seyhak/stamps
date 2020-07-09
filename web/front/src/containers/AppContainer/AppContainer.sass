@@ -1,18 +1,14 @@
 @import "../../global/styles/styles"
 
-@mixin theme($main_color: $dark_main_color, $background_color: $dark_background_color, $secondary_background_color: $dark_background_color_secondary)
-    $secondary_background_color: $secondary_background_color
-    color: $main_color
-    background-color: $background_color
-
 #root
-
     padding: 0
     margin: 0
+
     .AppContainer
         height: 100vh
         width: 100%
-    .dark
-        @include theme()
-    .light
-        @include theme($main_color: $light_main_color, $background_color: $light_background_color)
+
+body
+    font-family: $font_family
+    margin: 0
+

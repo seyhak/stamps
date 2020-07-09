@@ -1,12 +1,46 @@
-body
-    font-family: Montserrat, Muli
-    margin: 0
-
+// common
+$font_family: Montserrat, Muli
 // dark
-$dark_background_color: #353535
-$dark_background_color_secondary: #000000
-$dark_main_color: #ffffff
+$dark: (background_color1: #353535)
+$dark: map-merge($dark, (background_color2: #6e6e6e))
+$dark: map-merge($dark, (background_color3: #30303052))
+$dark: map-merge($dark, (background_color_secondary: #f2f2f2))
+$dark: map-merge($dark, (font_color_primary: #f2f2f2))
+$dark: map-merge($dark, (font_color_secondary: #353535))
 // light
-$light_background_color: #909090
-$light_background_color_secondary: #000000
-$light_main_color: #000000
+$light: (background_color1: #b9b9b9)
+$light: map-merge($light, (background_color2: #ffffff))
+$light: map-merge($light, (background_color3: #55555538))
+$light: map-merge($light, (background_color_secondary: #000000))
+$light: map-merge($light, (font_color_primary: #353535))
+$light: map-merge($light, (font_color_secondary: #f2f2f2))
+// mixins
+@mixin theme($theme)
+    color: map-get($theme, font_color_primary)
+    background-color: map-get($theme, dark_background_color1)
+    font-family: $font_family
+
+    &.AppContainer
+        background-image: linear-gradient(to bottom right, map-get($theme, background_color2), map-get($theme, background_color1))
+
+    .secondary
+        background-color: map-get($theme, background_color_secondary)
+        color: map-get($theme, font_color_secondary)
+
+    .clickable
+        &:active
+            background-color: map-get($theme, background_color1)
+            color: map-get($theme, background_color_secondary)
+    
+    .third
+        background-color: map-get($theme, background_color3)
+
+    .theme_switcher
+        fill: map-get($theme, background_color_secondary)
+
+//themes
+.theme_dark
+    @include theme($dark)
+
+.theme_light
+    @include theme($light)
