@@ -37,7 +37,12 @@ module.exports = {
 			skipWaiting: false
 		})
 	],
-
+	resolve: {
+		alias: {
+			COMPONENTS: path.resolve(__dirname, 'src/components'),
+			GLOBAL: path.resolve(__dirname, 'src/global')
+		}
+	},
 	module: {
 		rules: [
 			{

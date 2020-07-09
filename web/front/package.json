@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "test": "test"
+    "test": "jest"
   },
   "keywords": [
     "react",
@@ -19,12 +19,13 @@
     "@babel/core": "^7.10.3",
     "@babel/preset-env": "^7.10.3",
     "@babel/preset-react": "^7.10.1",
-    "@testing-library/react": "^10.4.1",
+    "@testing-library/react": "^10.4.6",
     "@webpack-cli/init": "^0.2.2",
     "babel-loader": "^8.1.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "css-loader": "^3.6.0",
     "eslint": "^7.3.1",
+    "eslint-plugin-jest": "^23.18.0",
     "eslint-plugin-react": "^7.20.0",
     "grommet-icons": "^4.4.0",
     "jest": "^26.1.0",
