@@ -4,9 +4,15 @@
       "allowSyntheticDefaultImports": false,
       "baseUrl": "./",
       "paths": {
+        "actions/*": ["src/actions/*"],
+        "containers/*": ["src/containers/*"],
         "components/*": ["src/components/*"],
-        "global/*": ["src/global/*"]
+        "global/*": ["src/global/*"],
+        "reducers/*": ["src/reducers/*"]
       }
     },
+    "typeAcquisition": { 
+      "include": [ "jest" ] 
+    },
     "exclude": ["node_modules"]
-  }
+}

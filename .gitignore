@@ -1,3 +1,6 @@
 web/front/node_modules/*
 *.pyc
 web/front/dist/*
+.vscode/settings.json
+stamps.code-workspace
+web/front/package-lock.json
