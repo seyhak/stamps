@@ -1,0 +1,47 @@
+@import "GLOBAL/styles/styles"
+
+.Card
+    border-radius: $border_radius
+    height: 20em
+    margin: 2em auto
+    max-width: 600px
+    padding: 1em
+    position: relative
+
+    .card_header
+        height: 8%
+        margin-bottom: 1em
+
+    .title
+        width: 100%
+        font-size: 1.5em
+        text-align: center
+
+    .logo
+        position: absolute
+        height: 28px
+        width: 28px
+
+    .card_stamps_container
+        height: 92%
+        width: 100%
+
+        .card_stamps_row
+            display: inline-flex
+            justify-content: space-between
+            width: 100%
+
+            .card_stamp
+                .card_stamp_company_background_image
+                    border-radius: 50%
+                    height: 110px
+                    padding: 5px
+                    z-index: 0
+
+                .card_stamp_company_logo_image
+                    border-radius: 50%
+                    height: 100px
+                    margin: 10px
+                    position: absolute
+                    z-index: 1
+                    border: solid 3px black

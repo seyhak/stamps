@@ -1,21 +1,24 @@
-import React, { useState }  from 'react'
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import PropTypes from 'prop-types'
 import { Menu, StatusUnknownSmall } from 'grommet-icons'
 import './Dropdown.sass'
-
+import { DropdownActionTypes } from 'ACTIONS/DropdownActions'
+import { switchDropdown } from 'ACTIONS/DropdownActions'
 
 function Dropdown(props){
-	const [menuState, switchMenu] = useState(false)
+	const { menuOpened } = useSelector(state => ({
+		menuOpened: state.dropdown.menuOpened
+	}))
+	const dispatch = useDispatch()
 	let dropdownMenu = null
 
-	function onMenuClick(){
-		switchMenu(!menuState)
-	}
-	if(menuState){
+	if(menuOpened){
 		dropdownMenu = (
 			<DropdownMenu
 				changeTheme={props.changeTheme}
-				switchMenu={switchMenu}
+				switchMenu={() => dispatch(switchDropdown())}
 				theme={props.theme}
 				options={props.options}
 			/>
@@ -25,7 +28,7 @@ function Dropdown(props){
 		<div className='dropdown_container'>
 			<Menu 
 				className='dropdown'
-				onClick={onMenuClick}
+				onClick={() => dispatch({ type: DropdownActionTypes.SWITCH_DROPDOWN})}
 				size='large'
 			/>
 			{dropdownMenu}

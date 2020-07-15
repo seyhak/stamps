@@ -1,4 +1,5 @@
-// common
+//common
+$border_radius: 10px
 $font_family: Montserrat, Muli
 // dark
 $dark: (background_color1: #353535)
@@ -7,6 +8,7 @@ $dark: map-merge($dark, (background_color3: #30303052))
 $dark: map-merge($dark, (background_color_secondary: #f2f2f2))
 $dark: map-merge($dark, (font_color_primary: #f2f2f2))
 $dark: map-merge($dark, (font_color_secondary: #353535))
+$dark: map-merge($dark, (input_border: 0px black))
 // light
 $light: (background_color1: #b9b9b9)
 $light: map-merge($light, (background_color2: #ffffff))
@@ -14,6 +16,8 @@ $light: map-merge($light, (background_color3: #55555538))
 $light: map-merge($light, (background_color_secondary: #000000))
 $light: map-merge($light, (font_color_primary: #353535))
 $light: map-merge($light, (font_color_secondary: #f2f2f2))
+$light: map-merge($light, (input_border: 1px black))
+
 // mixins
 @mixin theme($theme)
     color: map-get($theme, font_color_primary)
@@ -37,6 +41,10 @@ $light: map-merge($light, (font_color_secondary: #f2f2f2))
 
     .theme_switcher
         fill: map-get($theme, background_color_secondary)
+    
+    .input
+        border: map-get($theme, input_border)
+        border-style: solid
 
 //themes
 .theme_dark

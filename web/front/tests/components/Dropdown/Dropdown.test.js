@@ -1,8 +1,11 @@
 import React from 'react'
 
 import { render, fireEvent } from '@testing-library/react'
+import { Provider } from "react-redux"
+
 import { Dropdown } from 'COMPONENTS/Dropdown/Dropdown'
 import DropdownOption from 'GLOBAL/classes/DropdownOption'
+import store from 'GLOBAL/store'
 
 describe('Dropdown', () => {
 	const options = [
@@ -14,11 +17,13 @@ describe('Dropdown', () => {
 
 	test('dropdown icon and menu', () => {
 		const dropdown = render(
-			<Dropdown
-				changeTheme={myMock}
-				options={options}
-				theme={theme}
-			/>
+			<Provider store={store}>
+				<Dropdown
+					changeTheme={myMock}
+					options={options}
+					theme={theme}
+				/>
+			</Provider>
 		)
 		// render icon
 		expect(dropdown.baseElement.getElementsByClassName('dropdown')).toBeDefined()
