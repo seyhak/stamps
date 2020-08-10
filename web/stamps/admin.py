@@ -13,9 +13,6 @@ class CardsAdmin(admin.ModelAdmin):
         'start_date', 'used_date'
     ]
 
-    def user__username(self):
-        pass
-
 
 @admin.register(Company)
 class CompanyAdmin(admin.ModelAdmin):
