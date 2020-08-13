@@ -18,7 +18,7 @@ class TestGetMyCars(TestCase):
             user=user,
         )
         request = HttpRequest()
-        request.USER = user
+        request.user = user
         request.method = 'GET'
         resp = get_my_cards(request)
 
@@ -32,7 +32,7 @@ class TestGetMyCars(TestCase):
             'used_date': None,
             'user': 1
         }]
-        self.assertJSONEqual(
+        self.assertListEqual(
             resp.data,
             expected_data
         )

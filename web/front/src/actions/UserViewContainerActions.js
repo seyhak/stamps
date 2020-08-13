@@ -1,3 +1,6 @@
+import URI from 'urijs'
+import fetch from 'node-fetch'
+
 import { createAction } from '@reduxjs/toolkit'
 
 export const UserViewContainerActionTypes = {
@@ -11,9 +14,9 @@ function requestCards(){
 		type: UserViewContainerActionTypes.REQUEST
 	}
 }
-function requestCardsSuccess(json){
+function requestCardsSuccess(jsonData){
 	return {
-		json: json,
+		json: jsonData,
 		type: UserViewContainerActionTypes.SUCCESS
 	}
 }
@@ -25,9 +28,20 @@ export const requestCardsFailure = createAction(
 export function loadCards (){
 	return  dispatch => {
 		dispatch(requestCards())
-		return fetch(`https://www.instagram.com/seyhakly1/?__a=1`)
-			.then(response => response.json())
-			.then(json =>dispatch(requestCardsSuccess(json))
+		
+		const uri = new URI('http://127.0.0.1:8000/api/get_my_cards/')
+		const url = uri.toString()
+
+		return fetch(url, {
+			method: 'GET',
+			credentials: 'include',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+		})
+			.then(
+				response => response.json()
 			)
+			.then(json => dispatch(requestCardsSuccess(json)))
 	}
 }
