@@ -27,17 +27,17 @@ function Card(props){
 
 	const rows = []
 	const maxStampsPerRow = 5
-	const rowsAmount = Math.ceil(props.cardInfo['amountTotal'] / maxStampsPerRow)
+	const rowsAmount = Math.ceil(props.cardInfo['maximumStamps'] / maxStampsPerRow)
 	const height = (100 / rowsAmount).toString() + '%'
 
 	let addedStamps = 0
-	const stampsPerRow = getStampPerRow(rowsAmount, props.cardInfo['amountTotal'])
+	const stampsPerRow = getStampPerRow(rowsAmount, props.cardInfo['maximumStamps'])
 	//rows
 	for (let rowIndex = 0; rowIndex < rowsAmount; rowIndex++){
 		let stamps = []
 		//stamps per row
 		for (let index = 0; index < stampsPerRow; index++){
-			if (addedStamps == props.cardInfo['amountTotal']){
+			if (addedStamps == props.cardInfo['maximumStamps']){
 				break
 			}
 			stamps.push(

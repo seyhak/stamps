@@ -22,7 +22,6 @@ function UserViewContainer(props){
 	}
 	let searchBar = null
 	const cardsContent = []
-	console.log(cards)
 	if(isLoading){
 		cardsContent.push(
 			<LoadingSVG
@@ -40,15 +39,15 @@ function UserViewContainer(props){
 			size='large'
 			theme={props.theme}
 		/>)
-		//static cards
-		for (let i = 0; i < 2; i++) {
+
+		for (let i = 0; i < cards.length; i++) {
 			const cardInfo = {
-				'amountFilled': 2,
-				'amountTotal': 7,
-				'companyName': 'AbComp',
-				'companyLogo': 'https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg',
-				'companyStampLogo': 'http://www.pngall.com/wp-content/uploads/2016/07/Sun-Download-PNG.png',
-				'companyBackground': null, 
+				'collectedStamps': cards[i].collected_stamps,
+				'maximumStamps': cards[i].maximum_stamps,
+				'companyName':  cards[i].company_name,
+				'companyLogo': cards[i].company_logo_url,
+				'companyStampLogo': cards[i].company_stamp_url,
+				'companyBackground': cards[i].company_background_image_url, 
 			}
 			cardsContent.push(
 				<Card

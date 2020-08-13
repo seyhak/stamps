@@ -16,7 +16,7 @@ function userViewContainerReducer(state = initialState, action) {
 	case UserViewContainerActionTypes.SUCCESS:
 		return{
 			...state,
-			cards: [123],
+			cards: action.json,
 			isLoading: false
 		}
 	case UserViewContainerActionTypes.FAILURE:
