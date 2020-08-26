@@ -2,15 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './Navbar.sass'
 
-import DropdownOption from '../../global/classes/DropdownOption'
 import { Dropdown } from '../Dropdown/Dropdown'
 
 function Navbar(props){
-	const options = [
-		new DropdownOption('login'),
-		new DropdownOption('chuj'),
-		new DropdownOption('Change Theme')
-	]
+	const options = props.options
 	return(
 		<div className={'navbar secondary ' + props.theme}>
 			<div className={'title secondary ' + props.theme}>Stamps</div>
@@ -25,6 +20,7 @@ function Navbar(props){
 
 Navbar.propTypes = {
 	changeTheme: PropTypes.func,
+	options: PropTypes.array,
 	theme: PropTypes.string
 }
 export default Navbar

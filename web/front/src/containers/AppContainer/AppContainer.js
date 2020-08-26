@@ -6,9 +6,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { THEMES } from 'GLOBAL/consts'
 import { changeTheme } from 'ACTIONS/AppContainerActions'
 import { DropdownMenu } from 'COMPONENTS/Dropdown/Dropdown'
+import DropdownOption from 'GLOBAL/classes/DropdownOption'
 import UserViewContainer from 'CONTAINERS/UserViewContainer/UserViewContainer'
 import Footer from 'COMPONENTS/Footer/Footer'
 import Navbar from 'COMPONENTS/Navbar/Navbar'
+
 
 
 function AppContainer(){
@@ -20,9 +22,17 @@ function AppContainer(){
 
 	let content = null
 	let className = 'AppContainer' + ' ' + theme
+	let navbarOptions = null
+
+	function LoginOrRegister(){
+		console.log(123123)
+	}
 
 	switch(contentPage){
-	case 'home':
+	case 'undefined':
+		navbarOptions = [
+			new DropdownOption('Login or Register', null, LoginOrRegister)
+		]
 		break
 	case 'user':
 		content = (
@@ -35,7 +45,11 @@ function AppContainer(){
 
 	return(
 		<div className={className}>
-			<Navbar changeTheme={() => dispatch(changeTheme())} theme={theme}/>
+			<Navbar 
+				changeTheme={() => dispatch(changeTheme())}
+				options={navbarOptions}
+				theme={theme}
+			/>
 			<div className='body'>
 				{content}
 			</div>

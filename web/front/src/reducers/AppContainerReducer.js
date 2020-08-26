@@ -13,8 +13,9 @@ function changeTheme(current_theme){
 	}
 }
 
+
 const initialState = {
-	contentPage: 'user',
+	contentPage: 'undefined',
 	theme: 'theme_dark'
 }
 
@@ -24,6 +25,16 @@ function appContainerReducer(state = initialState, action) {
 		return{
 			...state,
 			theme: changeTheme(state.theme)
+		}
+	case AppContainerActionTypes.CHANGE_CONTENT_PAGE_UNDEFINED:
+		return{
+			...state,
+			contentPage: 'undefined',
+		}
+	case AppContainerActionTypes.CHANGE_CONTENT_PAGE_USER:
+		return{
+			...state,
+			contentPage: 'user',
 		}
 		// otherwise return the existing state unchanged
 	default:
