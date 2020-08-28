@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import './AppContainer.sass'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { THEMES } from 'GLOBAL/consts'
 import { changeTheme } from 'ACTIONS/AppContainerActions'
-import { DropdownMenu } from 'COMPONENTS/Dropdown/Dropdown'
 import DropdownOption from 'GLOBAL/classes/DropdownOption'
+import Modal from 'COMPONENTS/Modal/Modal'
 import UserViewContainer from 'CONTAINERS/UserViewContainer/UserViewContainer'
 import Footer from 'COMPONENTS/Footer/Footer'
 import Navbar from 'COMPONENTS/Navbar/Navbar'
-
 
 
 function AppContainer(){
@@ -18,14 +16,23 @@ function AppContainer(){
 		contentPage: state.appContainer.contentPage,
 		theme: state.appContainer.theme
 	}))
+	const [modal, setModal] = useState(null)
 	const dispatch = useDispatch()
 
 	let content = null
 	let className = 'AppContainer' + ' ' + theme
 	let navbarOptions = null
+	// let modal = null
 
 	function LoginOrRegister(){
 		console.log(123123)
+		setModal(
+			<Modal 
+
+			/>
+		)
+		console.log(modal)
+			
 	}
 
 	switch(contentPage){
@@ -40,6 +47,21 @@ function AppContainer(){
 				theme={theme}
 			/>
 		)
+		navbarOptions = [
+			new DropdownOption('User stuff', null, LoginOrRegister),
+			new DropdownOption('Logout', null, LoginOrRegister)
+		]
+		break
+	case 'business':
+		content = (
+			<UserViewContainer
+				theme={theme}
+			/>
+		)
+		navbarOptions = [
+			new DropdownOption('Business stuff', null, LoginOrRegister),
+			new DropdownOption('Logout', null, LoginOrRegister)
+		]
 		break
 	}
 
@@ -51,6 +73,7 @@ function AppContainer(){
 				theme={theme}
 			/>
 			<div className='body'>
+				{modal}
 				{content}
 			</div>
 			{/* <Footer/> */}
