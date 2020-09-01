@@ -4,25 +4,29 @@ import './Modal.sass'
 
 function ModalButton(props){
 	return(
-		<button className='button' onClick={props.onClick}>
+		<button className='modal_button' onClick={props.onClick}>
 			{props.text}
 		</button>
 	)
 }
 
 function Modal(props){
-	const buttons = props.modalButtons.map(button => {
-		<ModalButton
-			onClick={button.onClick}
-			text={button.text}
-		/>
+	const buttons = props.modalButtons.map((button, index) => {
+		return(
+			<ModalButton
+				key={index}
+				onClick={button.onClick}
+				text={button.text}
+			/>
+		)
 	})
-
+	console.log(buttons)
 	return(
-		<div className={'modal ' + props.theme}>
-			<div className="modal_content">
-				<span className="close"></span>
-				<p>{props.modalText}</p>
+		<div className={'Modal secondary ' + props.theme}>
+			<div className='modal_content'>
+				{/* <span className="close"></span> */}
+				<div className='modal_header'>{props.header}</div>
+				<div className='modal_body'>{props.modalText}</div>
 			</div>
 			<div className='modal_footer'>
 				{buttons}

@@ -28,7 +28,7 @@ function Dropdown(props){
 		<div className='dropdown_container'>
 			<Menu 
 				className='dropdown'
-				onClick={() => dispatch({ type: DropdownActionTypes.SWITCH_DROPDOWN})}
+				onClick={() => dispatch({type: DropdownActionTypes.SWITCH_DROPDOWN})}
 				size='large'
 			/>
 			{dropdownMenu}

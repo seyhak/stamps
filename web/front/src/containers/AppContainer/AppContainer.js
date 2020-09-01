@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { THEMES } from 'GLOBAL/consts'
 import { changeTheme } from 'ACTIONS/AppContainerActions'
+import { switchDropdown } from 'ACTIONS/DropdownActions'
 import DropdownOption from 'GLOBAL/classes/DropdownOption'
 import Modal from 'COMPONENTS/Modal/Modal'
 import UserViewContainer from 'CONTAINERS/UserViewContainer/UserViewContainer'
@@ -25,20 +26,26 @@ function AppContainer(){
 	// let modal = null
 
 	function LoginOrRegister(){
-		console.log(123123)
+		console.log('LoginOrRegister')
+	}
+
+	function OpenLoginOrRegisterModal(){
+		dispatch(switchDropdown())
 		setModal(
 			<Modal 
-
+				modalButtons={[
+					{'onClick': LoginOrRegister, 'text': 'Dbtn'}
+				]}
+				header='Login or Register'
+				theme={theme}
 			/>
 		)
-		console.log(modal)
-			
 	}
 
 	switch(contentPage){
 	case 'undefined':
 		navbarOptions = [
-			new DropdownOption('Login or Register', null, LoginOrRegister)
+			new DropdownOption('Login or Register', null, OpenLoginOrRegisterModal)
 		]
 		break
 	case 'user':
