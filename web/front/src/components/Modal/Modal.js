@@ -6,7 +6,7 @@ import OutsideComponentEvent from 'COMPONENTS/OutsideComponentEvent/OutsideCompo
 
 function ModalButton(props){
 	return(
-		<button className='modal_button' onClick={props.onClick}>
+		<button className={'modal_button clickable_1 ' + props.theme} onClick={props.onClick}>
 			{props.text}
 		</button>
 	)
@@ -19,6 +19,7 @@ function Modal(props){
 				key={index}
 				onClick={button.onClick}
 				text={button.text}
+				theme={props.theme}
 			/>
 		)
 	})
@@ -41,8 +42,8 @@ function Modal(props){
 }
 
 Modal.defaultProps = {
-	header: 'Header',
-	modalText: 'Header',
+	header: '',
+	modalText: '',
 	modalButtons: [],
 	theme: ''
 }
@@ -57,7 +58,8 @@ Modal.propTypes = {
 
 ModalButton.propTypes = {
 	onClick: PropTypes.func,
-	text: PropTypes.string
+	text: PropTypes.string,
+	theme: PropTypes.string
 }
 
 export default Modal

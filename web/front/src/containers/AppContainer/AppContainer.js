@@ -17,7 +17,7 @@ function AppContainer(){
 		contentPage: state.appContainer.contentPage,
 		theme: state.appContainer.theme
 	}))
-	const [modal, setModal] = useState(null)
+	const [loginRegisterModalOpened, setLoginRegisterModal] = useState(false)
 	const dispatch = useDispatch()
 
 	let content = null
@@ -25,27 +25,25 @@ function AppContainer(){
 	let navbarOptions = null
 	// let modal = null
 
-	function LoginOrRegister(){
-		console.log('LoginOrRegister')
+	function Login(){
+		console.log('Logir')
 	}
 
-	function OpenLoginOrRegisterModal(){
-		dispatch(switchDropdown())
-		setModal(
-			<Modal 
-				modalButtons={[
-					{'onClick': LoginOrRegister, 'text': 'Dbtn'}
-				]}
-				header='Login or Register'
-				theme={theme}
-			/>
-		)
+	function Register(){
+		console.log('Register')
+	}
+
+	function SwitchLoginOrRegisterModal(){
+		if(!loginRegisterModalOpened){
+			dispatch(switchDropdown())
+		}
+		setLoginRegisterModal(!loginRegisterModalOpened)
 	}
 
 	switch(contentPage){
 	case 'undefined':
 		navbarOptions = [
-			new DropdownOption('Login or Register', null, OpenLoginOrRegisterModal)
+			new DropdownOption('Login or Register', null, SwitchLoginOrRegisterModal)
 		]
 		break
 	case 'user':
@@ -80,7 +78,19 @@ function AppContainer(){
 				theme={theme}
 			/>
 			<div className='body'>
-				{modal}
+				{
+					loginRegisterModalOpened ? (
+						<Modal 
+							modalButtons={[
+								{'onClick': Login, 'text': 'Login'},
+								{'onClick': Register, 'text': 'Register'}
+							]}
+							header='Login or Register'
+							outsideModalClick={SwitchLoginOrRegisterModal}
+							theme={theme}
+						/>
+					) : null
+				}
 				{content}
 			</div>
 			{/* <Footer/> */}

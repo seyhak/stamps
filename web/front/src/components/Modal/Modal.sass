@@ -1,4 +1,4 @@
-@import "../../global/styles/styles"
+@import "GLOBAL/styles/styles"
 
 .Modal
     border-radius: $border_radius
@@ -7,10 +7,18 @@
     position: relative
     z-index: 100
 
+    .modal_button
+        border: none
+        border-radius: $border_radius
+        padding: 0.5em 1.5em
+
     .modal_header
         font-size: 1.5em
         font-weight: bold
+        margin: 0 0 1em
         text-align: center
 
     .modal_footer
+        display: flex
+        justify-content: space-around
         margin: 1em 0em 0em
