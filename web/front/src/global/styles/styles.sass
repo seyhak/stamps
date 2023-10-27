@@ -21,7 +21,7 @@ $light: map-merge($light, (input_border: 1px black))
 // mixins
 @mixin theme($theme)
     color: map-get($theme, font_color_primary)
-    background-color: map-get($theme, dark_background_color1)
+    background-color: map-get($theme, background_color1)
     font-family: $font_family
 
     &.AppContainer
@@ -35,7 +35,12 @@ $light: map-merge($light, (input_border: 1px black))
         &:active
             background-color: map-get($theme, background_color1)
             color: map-get($theme, background_color_secondary)
-    
+
+    .clickable_1
+        &:active
+            background-color: map-get($theme, background_color2)
+            color: map-get($theme, background_color_secondary)
+
     .third
         background-color: map-get($theme, background_color3)
 
