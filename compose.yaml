@@ -1,0 +1,47 @@
+version: '3.8'
+services:
+  postgres:
+    # https://hub.docker.com/_/postgres
+    image: postgres:alpine3.18
+    ports:
+      - "5432:5432"
+    environment:
+      - PGUSER=seyhak
+      - POSTGRES_USER=seyhak
+      - POSTGRES_PASSWORD=seyhak_pass
+      - POSTGRES_DB=PG
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/.pgpass:/var/lib/postgresql/data/.pgpass
+      - ./db/pg_service.conf:/var/lib/postgresql/data/pg_service.conf
+      - ./db/pg_service.conf:/pg_service.conf
+      # - ./db:/var/lib/postgresql/data/
+    # healthcheck:
+      # test: pg_isready -U $POSTGRES_USER
+      # interval: 3s
+      # timeout: 5s
+      # retries: 5
+
+  web:
+    build:
+      dockerfile: ./stamps_web/Dockerfile
+    volumes:
+      - ./stamps_web/:/usr/src/app
+      # run ` pg_config --sysconfdir` to check directory
+      - ../db/.pgpass:/var/lib/postgresql/data/.pgpass
+      - ../db/pg_service.conf:/var/lib/postgresql/data/pg_service.conf
+      - ../db/pg_service.conf:/pg_service.conf
+      - ../db/pg_service.conf:/home/pg_service.conf
+      # - ./db/.pgpass:/etc/postgresql/.pgpass
+      # - ./db/pg_service.conf:/etc/postgresql/.pg_service.conf
+    ports:
+      - 8000:8000
+    # keep the container running, just like -t in docker command
+    tty : true
+    depends_on:
+      - postgres
+      # postgres:
+        # condition: service_healthy
+
+volumes:
+  postgres_data:

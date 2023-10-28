@@ -1,4 +1,4 @@
-web/front/node_modules/*
+*/node_modules/*
 *.pyc
 web/front/dist/*
 .vscode/settings.json

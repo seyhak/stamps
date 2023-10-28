@@ -1,10 +1,10 @@
-## RUN SERVER ##
+## CREATE SUPERUSER ##
 ```
-cd web
-python manage.py runserver
+1. get inside container
+2. python manage.py createsuperuser
+3. (optional) user: seyhak, password: admin
 ```
-## RUN FRONTEND ##
+## RUN ALL ##
 ```
-cd web/front
-npm run build
+docker-compose up
 ```
