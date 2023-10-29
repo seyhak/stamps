@@ -20,7 +20,7 @@ def get_my_cards(request):
         return Response(CardSerializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
     if request.method == 'GET':
-        cards = Card.objects.filter(user=user)
+        cards = Card.objects.filter(card_owner=user)
         serializer = CardSerializer(cards, many=True)
         return Response(serializer.data)
 

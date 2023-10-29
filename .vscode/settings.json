@@ -2,5 +2,9 @@
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": false,
     "python.linting.flake8Enabled": true,
-    "python.pythonPath": "D:\\INFORMATYKA\\Przykłady\\VirtualEnviroments\\stamps\\Scripts\\python.exe"
+    "python.pythonPath": "D:\\INFORMATYKA\\Przykłady\\VirtualEnviroments\\stamps\\Scripts\\python.exe",
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
 }
