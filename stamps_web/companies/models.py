@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 class Company(models.Model):
@@ -25,3 +26,8 @@ class Company(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class CompanyUser(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=False, blank=False)

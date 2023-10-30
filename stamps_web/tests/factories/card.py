@@ -20,5 +20,5 @@ class CardFactory(DjangoModelFactory):
     class Meta:
         model = Card
 
-    company = SubFactory(CompanyFactory)
     card_owner = SubFactory(UserFactory)
+    card_type = SubFactory(CardTypeFactory)

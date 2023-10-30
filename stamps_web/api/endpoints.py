@@ -9,6 +9,7 @@ from cards.models import Card
 from cards.serializers import CardSerializer
 
 
+#  legacy code
 @api_view(['GET', 'POST'])
 def get_my_cards(request):
     try:
