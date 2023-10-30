@@ -1,26 +1,30 @@
 from rest_framework import permissions
+from django.core.exceptions import ObjectDoesNotExist
 
 
-class IsCompanysUser(permissions.BasePermission):
+class IsCompanysUserCardType(permissions.BasePermission):
     """
     Allow only companys users to see card types.
     """
-
     def has_object_permission(self, request, view, obj):
-        is_user_in_company = request.user.is_authenticated and obj.company == request.user.company
+        company_user = getattr(request.user, 'companyuser')
+        is_user_in_company = obj.company == company_user.company
         return is_user_in_company
 
 
-class IsOwnerOrReadOnly(permissions.BasePermission):
+class IsAllowedToIncrementStamps(permissions.BasePermission):
     """
-    Custom permission to only allow owners of an object to edit it.
+    Allow only companys users to see increment card stamps.
     """
-
     def has_object_permission(self, request, view, obj):
-        # Read permissions are allowed to any request,
-        # so we'll always allow GET, HEAD or OPTIONS requests.
-        if request.method in permissions.SAFE_METHODS:
-            return True
+        try:
+            company_user = getattr(request.user, 'companyuser')
+            is_user_in_company = obj.card_type.company == company_user.company
+            return is_user_in_company
+        except ObjectDoesNotExist:
+            return False
 
-        # Write permissions are only allowed to the owner of the snippet.
-        return obj.owner == request.user
+
+class IsCardOwner(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return obj.card_owner == request.user
