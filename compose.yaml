@@ -43,5 +43,12 @@ services:
       # postgres:
         # condition: service_healthy
 
+  black:
+    build:
+      dockerfile: ./stamps_web/Dockerfile.formatter
+    volumes:
+      - ./stamps_web/:/usr/src/app
+    tty : true
+
 volumes:
   postgres_data:

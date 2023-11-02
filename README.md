@@ -22,7 +22,17 @@ is an app for managing client cards with loyality stamps. Basic assumptions:
 docker-compose up
 ```
 
-## MANUAL TESTING
+## RUN CODE-FORMATTER
+
+from particular container, black, isort, autoflake 
+```
+isort .
+autoflake --in-place --remove-unused-variables .
+black <dir>
+black .
+```
+
+## AUTO TESTING
 ```
 1) REUSE_DB=1 python app/manage.py test api.tests.test_endpoints.TestGetMyCards.test_get_my_cards -v=2
 2) python app/manage.py test --verbosity=2

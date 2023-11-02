@@ -1,7 +1,7 @@
+from factory import SubFactory, fuzzy
 from factory.django import DjangoModelFactory
 
 from companies.models import Company, CompanyUser
-from factory import fuzzy, SubFactory
 from tests.factories.user import UserFactory
 
 
@@ -18,4 +18,3 @@ class CompanyUserFactory(DjangoModelFactory):
 
     class Meta:
         model = CompanyUser
-

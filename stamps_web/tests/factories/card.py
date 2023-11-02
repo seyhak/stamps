@@ -1,4 +1,4 @@
-from factory import fuzzy, SubFactory
+from factory import SubFactory, fuzzy
 from factory.django import DjangoModelFactory
 
 from cards.models import Card, CardType

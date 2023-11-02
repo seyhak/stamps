@@ -2,13 +2,12 @@ from django.http import HttpRequest
 from django.test import TestCase
 from django.utils import timezone
 from freezegun import freeze_time
+from rest_framework import status
+from rest_framework.test import APIClient
 
 from api.endpoints import get_my_cards
-from tests.factories.card import CardFactory
+from tests.factories.card import CardFactory, CardTypeFactory
 from tests.factories.user import UserFactory
-from rest_framework.test import APIClient
-from tests.factories.card import CardTypeFactory
-from rest_framework import status
 
 
 @freeze_time("2012-01-14")

@@ -1,15 +1,14 @@
 from django.core.exceptions import ObjectDoesNotExist
+from rest_framework import (decorators, exceptions, mixins, permissions,
+                            status, viewsets)
 from rest_framework.response import Response
-from rest_framework import permissions, viewsets, status, mixins, exceptions, decorators
 
-from cards.models import CardType, Card
-from .permissions import IsCompanysUserCardType, IsCardOwner, IsAllowedToIncrementStamps
-from .serializers import (
-    CardTypeSerializer,
-    CardTypeCreateSerializer,
-    CardSerializer,
-    CardCreateSerializer,
-)
+from cards.models import Card, CardType
+
+from .permissions import (IsAllowedToIncrementStamps, IsCardOwner,
+                          IsCompanysUserCardType)
+from .serializers import (CardCreateSerializer, CardSerializer,
+                          CardTypeCreateSerializer, CardTypeSerializer)
 
 
 class CardTypeViewSet(viewsets.ModelViewSet):
