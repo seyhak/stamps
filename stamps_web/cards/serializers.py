@@ -1,5 +1,6 @@
-from cards.models import Card, CardType
 from rest_framework import serializers
+
+from cards.models import Card, CardType
 
 
 class CardTypeCreateSerializer(serializers.ModelSerializer):

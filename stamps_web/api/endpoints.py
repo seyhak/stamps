@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
-
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -10,7 +9,7 @@ from cards.serializers import CardSerializer
 
 
 #  legacy code
-@api_view(['GET', 'POST'])
+@api_view(["GET", "POST"])
 def get_my_cards(request):
     try:
         user = request.user
@@ -20,7 +19,7 @@ def get_my_cards(request):
     if user.is_anonymous:
         return Response(CardSerializer.errors, status=status.HTTP_401_UNAUTHORIZED)
 
-    if request.method == 'GET':
+    if request.method == "GET":
         cards = Card.objects.filter(card_owner=user)
         serializer = CardSerializer(cards, many=True)
         return Response(serializer.data)
